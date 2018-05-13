@@ -109,27 +109,27 @@ For sharing data between interpreters:
 | create_channel() ->            | | Create a new channel for passing         |
 | (RecvChannel, SendChannel)     | | data between interpreters.               |
 +--------------------------------+--------------------------------------------+
-| | list_all_channels() ->       | Get all open channels.                     |
-| | [(RecvChannel, SendChannel)] |                                            |
+| list_all_channels() ->         | Get all open channels.                     |
+| [(RecvChannel, SendChannel)]   |                                            |
 +--------------------------------+--------------------------------------------+
 
 |
 
-+-------------------------------+-----------------------------------------------+
-| signature                     | description                                   |
-+===============================+===============================================+
-| class RecvChannel(id)         | The receiving end of a channel.               |
-+-------------------------------+-----------------------------------------------+
-| .id                           | The channel's unique ID.                      |
-+-------------------------------+-----------------------------------------------+
-| .interpreters                 | The list of associated interpreters.          |
++-----------------------------------+-----------------------------------------------+
+| signature                         | description                                   |
++===================================+===============================================+
+| class RecvChannel(id)             | The receiving end of a channel.               |
++-----------------------------------+-----------------------------------------------+
+| .id                               | The channel's unique ID.                      |
++-----------------------------------+-----------------------------------------------+
+| .interpreters                     | The list of associated interpreters.          |
 +-----------------------------------+-----------------------------------------------+
 | .recv() -> object                 | | Get the next object from the channel,       |
 |                                   | | and wait if none have been sent.            |
 |                                   | | Associate the interpreter with the channel. |
 +-------------------------------+-----------------------------------------------+
-| | .recv_nowait(default=None) ->   | | Like recv(), but return the default         |
-| |                     object      | | instead of waiting.                         |
+| | .recv_nowait(default=None)      | | Like recv(), but return the default         |
+| |                  -> object      | | instead of waiting.                         |
 +-----------------------------------+-----------------------------------------------+
 | .release()                        | | No longer associate the current interpreter |
 |                                   | | with the channel (on the receiving end).    |
